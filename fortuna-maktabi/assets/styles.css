@@ -366,3 +366,10 @@ fieldset.field { border: 0; margin: 0 0 16px; padding: 0; }
   }
   .sticky-cta.is-visible { transform: none; }
 }
+
+/* Contact extras */
+.form-alt { text-align: center; font-size: .9rem; color: var(--muted); margin: 16px 0 0; padding-top: 16px; border-top: 1px solid var(--line); }
+.form-alt a { color: var(--navy-600); font-weight: 600; }
+.cta-band__actions { display: flex; flex-wrap: wrap; gap: 12px; }
+.footer__inline { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; }
+.footer__links { display: flex; flex-wrap: wrap; gap: 18px; }

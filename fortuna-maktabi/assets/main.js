@@ -22,6 +22,8 @@
   var contacts = {
     phone: cfg.phone ? { href: "tel:" + phoneDigits, text: cfg.phone } : null,
     telegram: cfg.telegram ? { href: "https://t.me/" + cfg.telegram, text: "@" + cfg.telegram } : null,
+    admin: cfg.telegramAdmin ? { href: "https://t.me/" + cfg.telegramAdmin, text: "@" + cfg.telegramAdmin } : null,
+    bot: cfg.telegramBot ? { href: "https://t.me/" + cfg.telegramBot, text: "@" + cfg.telegramBot } : null,
     instagram: cfg.instagram ? { href: "https://instagram.com/" + cfg.instagram, text: "@" + cfg.instagram } : null,
     address: cfg.address ? { href: cfg.mapUrl || null, text: cfg.address } : null
   };

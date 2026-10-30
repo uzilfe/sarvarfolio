@@ -6,10 +6,13 @@
 window.FORTUNA = {
   // Telefon: "+998 90 123 45 67" ko'rinishida
   phone: "",
-  // Telegram: "fortunaschool" (@ belgisisiz)
-  telegram: "",
-  // Instagram: "fortunaschool" (@ belgisisiz)
-  instagram: "",
+  // Telegram kanal (@ belgisisiz)
+  telegram: "fortuna_maktabi",
+  // Telegram orqali murojaat: admin va bot (@ belgisisiz)
+  telegramAdmin: "fortuna_school_admin",
+  telegramBot: "fortunamaktabibot",
+  // Instagram (@ belgisisiz)
+  instagram: "fortunamaktabi",
   // Manzil
   address: "Toshkent sh., Chorsu",
   // Google/Yandex xarita havolasi

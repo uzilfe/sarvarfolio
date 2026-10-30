@@ -40,7 +40,10 @@
     var anyVisible = Array.prototype.some.call(g.querySelectorAll("[data-contact-wrap]"), function (w) { return !w.hidden; });
     if (!anyVisible) g.hidden = true;
   });
-  if (cfg.price) document.querySelectorAll("[data-price]").forEach(function (el) { el.textContent = cfg.price; });
+  var prices = cfg.prices || {};
+  document.querySelectorAll("[data-price]").forEach(function (el) {
+    if (prices[el.dataset.price]) el.textContent = prices[el.dataset.price];
+  });
   document.querySelectorAll("[data-year]").forEach(function (el) { el.textContent = new Date().getFullYear(); });
 
   // --- Mobil menyu ---
@@ -130,6 +133,8 @@
         phone: (el.namedItem("phone").value || "").trim(),
         role: (form.querySelector('[name="role"]:checked') || {}).value || "",
         grade: el.namedItem("grade").value,
+        language: (form.querySelector('[name="language"]:checked') || {}).value || "",
+        dorm: !!(el.namedItem("dorm") && el.namedItem("dorm").checked),
         website: el.namedItem("website").value, // honeypot
         page: location.pathname,
         utm: utm
@@ -141,6 +146,7 @@
       if (data.phone.replace(/\D/g, "").length !== 12) invalid("phone");
       if (!data.role) invalid("role");
       if (!data.grade) invalid("grade");
+      if (form.querySelector('[name="language"]') && !data.language) invalid("language");
       if (!ok) {
         var first = form.querySelector(".is-invalid input, .is-invalid select");
         if (first) first.focus();

@@ -11,9 +11,9 @@ Huquq va diplomatiya yo'nalishidagi xususiy maktab uchun sayt va target reklama 
 
 Framework yo'q: oddiy HTML/CSS/JS va Vercel'dagi bitta serverless funksiya. Build talab qilinmaydi.
 
-## 1. Kontaktlar va narx
+## 1. Kontaktlar va narxlar
 
-`assets/config.js` faylini tahrirlang: telefon, Telegram, Instagram, manzil, narx, Meta Pixel ID.
+`assets/config.js` faylini tahrirlang: telefon, Telegram, Instagram, manzil, narxlar (o'zbek guruh, rus guruh, yotoqxona bilan), Meta Pixel ID.
 Bo'sh qoldirilgan maydon saytda ko'rinmaydi.
 
 ## 2. Arizalar qayerga tushadi

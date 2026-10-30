@@ -264,6 +264,18 @@ fieldset.field { border: 0; margin: 0 0 16px; padding: 0; }
 }
 .segmented input:checked + label { border-color: var(--navy-800); background: var(--navy-800); color: #fff; }
 .segmented input:focus-visible + label { outline: 3px solid var(--gold-400); outline-offset: 2px; }
+.check { display: flex; gap: 10px; align-items: center; margin: 0 0 18px; font-size: .95rem; cursor: pointer; }
+.check input { width: 20px; height: 20px; accent-color: var(--navy-800); flex: 0 0 auto; margin: 0; }
+
+/* Price cards */
+.price-card h3 { margin-bottom: 14px; }
+.price-card__value { font-family: var(--serif); font-size: clamp(1.9rem, 4vw, 2.4rem); color: var(--navy-800); line-height: 1.1; }
+.price-card__value small { font-family: var(--sans); font-size: .95rem; color: var(--muted); }
+.price-card p { margin-top: 12px; font-size: .95rem; }
+.price-card--accent { background: var(--navy-800); color: #fff; border-color: var(--navy-800); }
+.price-card--accent .price-card__value { color: var(--gold-400); }
+.price-card--accent .price-card__value small, .price-card--accent p { color: rgba(255,255,255,.7); }
+
 .hp { position: absolute !important; left: -9999px !important; width: 1px; height: 1px; overflow: hidden; }
 .form-note { font-size: .8rem; color: var(--muted); text-align: center; margin: 14px 0 0; }
 .form-alert { display: none; background: #fdecea; color: var(--danger); border-radius: 10px; padding: 12px 14px; font-size: .9rem; margin-bottom: 14px; }

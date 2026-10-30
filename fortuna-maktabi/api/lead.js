@@ -10,6 +10,7 @@
 
 const ROLES = ["Ota-ona", "O'quvchi"];
 const GRADES = ["8-sinf", "9-sinf", "10-sinf", "11-sinf"];
+const LANGUAGES = ["O'zbek", "Rus"];
 const UTM_KEYS = ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term", "fbclid"];
 
 function clean(value, max) {
@@ -38,6 +39,9 @@ function parseLead(body) {
   if (!/^998\d{9}$/.test(digits)) return { error: "phone" };
   if (!ROLES.includes(role)) return { error: "role" };
   if (!GRADES.includes(grade)) return { error: "grade" };
+  const language = clean(body.language, 20);
+  if (language && !LANGUAGES.includes(language)) return { error: "language" };
+  const dorm = body.dorm === true;
 
   const utm = {};
   if (body.utm && typeof body.utm === "object") {
@@ -45,7 +49,7 @@ function parseLead(body) {
   }
 
   const phone = `+998 ${digits.slice(3, 5)} ${digits.slice(5, 8)} ${digits.slice(8, 10)} ${digits.slice(10, 12)}`;
-  return { lead: { name, phone, role, grade, utm, page: clean(body.page, 100) } };
+  return { lead: { name, phone, role, grade, language, dorm, utm, page: clean(body.page, 100) } };
 }
 
 function sourceLabel(utm) {
@@ -63,13 +67,15 @@ async function sendTelegram(lead) {
 
   const lines = [
     "🆕 <b>Yangi ariza — Fortuna Maktabi</b>",
-    "",
+    " ",
     `👤 <b>Ism:</b> ${escapeHtml(lead.name)}`,
     `📞 <b>Telefon:</b> ${escapeHtml(lead.phone)}`,
     `🙋 <b>Kim:</b> ${escapeHtml(lead.role)}`,
     `🎓 <b>Sinf:</b> ${escapeHtml(lead.grade)}`,
+    lead.language && `🗣 <b>Til:</b> ${escapeHtml(lead.language)} guruh`,
+    lead.dorm && "🏠 <b>Yotoqxona kerak</b> (viloyatdan)",
     `📍 <b>Manba:</b> ${escapeHtml(sourceLabel(lead.utm))}`
-  ];
+  ].filter(Boolean);
   if (lead.utm.utm_campaign) lines.push(`📢 <b>Kampaniya:</b> ${escapeHtml(lead.utm.utm_campaign)}`);
   if (lead.utm.utm_content) lines.push(`🎨 <b>Kreativ:</b> ${escapeHtml(lead.utm.utm_content)}`);
 
@@ -88,7 +94,10 @@ async function sendNotion(lead) {
   if (!token || !databaseId) return "skipped";
 
   const utmText = Object.keys(lead.utm).map((k) => `${k}=${lead.utm[k]}`).join(", ");
-  const note = [`Manba: ${sourceLabel(lead.utm)}`, utmText, lead.page && `Sahifa: ${lead.page}`].filter(Boolean).join(" | ");
+  const note = [
+    lead.language && `Til: ${lead.language} guruh`,
+    lead.dorm && "Yotoqxona kerak",
+    `Manba: ${sourceLabel(lead.utm)}`, utmText, lead.page && `Sahifa: ${lead.page}`].filter(Boolean).join(" | ");
 
   const r = await fetch("https://api.notion.com/v1/pages", {
     method: "POST",

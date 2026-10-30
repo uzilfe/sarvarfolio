@@ -4,8 +4,9 @@
  * Faqat shu faylni tahrirlab kontaktlar va narxlarni yangilash mumkin.
  */
 window.FORTUNA = {
-  // Telefon: "+998 90 123 45 67" ko'rinishida
-  phone: "",
+  // Telefonlar: "+998 90 123 45 67" ko'rinishida
+  phone: "+998 99 120 02 00",
+  phone2: "+998 71 200 80 80",
   // Telegram kanal (@ belgisisiz)
   telegram: "fortuna_maktabi",
   // Telegram orqali murojaat: admin va bot (@ belgisisiz)

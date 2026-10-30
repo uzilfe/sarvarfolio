@@ -347,7 +347,7 @@ fieldset.field { border: 0; margin: 0 0 16px; padding: 0; }
   .lp-hero .badge { margin-bottom: 14px; }
   /* Reklamadan kelganlar formani tezroq ko'rishi uchun: mobilda faqat sarlavhalar */
   .lp-points { gap: 10px; margin-bottom: 0; }
-  .lp-points .lp-detail, .lp-hero .lp-price { display: none; }
+  .lp-points .lp-detail, .lp-hero .lp-price, .lp-hero .lp-facts { display: none; }
   .facts { grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
   .fact b { font-size: 1.25rem; }
   .fact span { font-size: .78rem; }
@@ -369,7 +369,18 @@ fieldset.field { border: 0; margin: 0 0 16px; padding: 0; }
 
 /* Contact extras */
 .form-alt { text-align: center; font-size: .9rem; color: var(--muted); margin: 16px 0 0; padding-top: 16px; border-top: 1px solid var(--line); }
-.form-alt a { color: var(--navy-600); font-weight: 600; }
+.form-alt a { color: var(--navy-600); font-weight: 600; white-space: nowrap; }
 .cta-band__actions { display: flex; flex-wrap: wrap; gap: 12px; }
 .footer__inline { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; }
 .footer__links { display: flex; flex-wrap: wrap; gap: 18px; }
+
+/* O'quv dasturi */
+.program__label { display: inline-block; font-size: .78rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--gold-500); margin-bottom: 18px; }
+.program__list { list-style: none; padding: 0; margin: 0; display: grid; gap: 14px; }
+.program__list li { display: flex; flex-direction: column; padding: 14px 18px; border-radius: 12px; background: var(--bg-soft); border-left: 3px solid var(--gold-500); }
+.program__list b { font-family: var(--serif); font-size: 1.2rem; }
+.program__list span { color: var(--muted); font-size: .92rem; }
+.nav .nav__phone { color: #fff; font-weight: 600; }
+.lp-facts { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
+.lp-facts span { font-size: .85rem; padding: 6px 12px; border-radius: 999px; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.14); color: rgba(255,255,255,.85); }
+@media (max-width: 1100px) and (min-width: 861px) { .nav { gap: 18px; } .nav a { font-size: .9rem; } }

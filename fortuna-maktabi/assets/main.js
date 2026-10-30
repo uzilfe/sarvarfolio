@@ -18,9 +18,10 @@
   }
 
   // --- Kontaktlarni config.js dan to'ldirish ---
-  var phoneDigits = (cfg.phone || "").replace(/[^\d+]/g, "");
+  function tel(p) { return p ? { href: "tel:" + p.replace(/[^\d+]/g, ""), text: p } : null; }
   var contacts = {
-    phone: cfg.phone ? { href: "tel:" + phoneDigits, text: cfg.phone } : null,
+    phone: tel(cfg.phone),
+    phone2: tel(cfg.phone2),
     telegram: cfg.telegram ? { href: "https://t.me/" + cfg.telegram, text: "@" + cfg.telegram } : null,
     admin: cfg.telegramAdmin ? { href: "https://t.me/" + cfg.telegramAdmin, text: "@" + cfg.telegramAdmin } : null,
     bot: cfg.telegramBot ? { href: "https://t.me/" + cfg.telegramBot, text: "@" + cfg.telegramBot } : null,
